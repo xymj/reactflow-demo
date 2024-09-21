@@ -5,6 +5,10 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
+  MiniMap,
+  Controls,
+  Background,
+  BackgroundVariant,
 } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
@@ -37,17 +41,21 @@ const initEdges = [
     id: "e1->2",
     source: "1",
     target: "2",
+    label: "from to",
+    type: "step",
   },
 ];
 
 export default function BaseFlow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
-
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
+
   const onConnect = useCallback(
     (params) => setEdges((edgs) => addEdge(params, edgs)),
     [setEdges]
   );
+
+  const lines = BackgroundVariant.Dots;
   return (
     <ReactFlowProvider>
       <ReactFlow
@@ -57,7 +65,11 @@ export default function BaseFlow() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
-      />
+      >
+        <MiniMap />
+        <Controls />
+        <Background variant={lines} gap={15} size={2} />
+      </ReactFlow>
     </ReactFlowProvider>
   );
 }
