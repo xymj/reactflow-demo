@@ -17,7 +17,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "strictFunctionTypes": false,
   },
   "include": ["vite.config.ts"]
 }

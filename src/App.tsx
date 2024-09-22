@@ -4,10 +4,12 @@ import { useState } from "react";
 // import './App.css'
 import BaseFlow from "./DemoBase";
 import CustomFlow from "./DemoCustomNode";
+import CustomEdgeFlow from "./DemoCustomEdge";
 
 function App() {
   // return <BaseFlow />;
-  return <CustomFlow />;
+  // return <CustomFlow />;
+  return <CustomEdgeFlow />;
 }
 
 export default App;
