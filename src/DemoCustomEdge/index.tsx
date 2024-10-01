@@ -80,6 +80,7 @@ export default function CustomEdgeFlow() {
   return (
     <>
       <ReactFlow
+        style={{ height: 10, width: 10 }}
         nodes={nodes}
         edges={edges}
         edgeTypes={edgeTypes}

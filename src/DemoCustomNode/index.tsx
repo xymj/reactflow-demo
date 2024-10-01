@@ -104,7 +104,7 @@ export default function CustomFlow() {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
-        style={{ backgroundColor: "#B8CEFF" }}
+        style={{ backgroundColor: "#B8CEFF", width: 100, height: 100 }}
       />
     </ReactFlowProvider>
   );

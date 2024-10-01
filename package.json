@@ -10,11 +10,32 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.56.2",
     "@xyflow/react": "^12.3.0",
+    "ace-builds": "^1.36.2",
+    "antd": "^5.21.0",
+    "antd-style": "^3.7.0",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^11.7.0",
+    "p-debounce": "^4.0.0",
+    "postcss": "^8.4.47",
     "react": "^18.3.1",
+    "react-ace": "^12.0.0",
     "react-dom": "^18.3.1",
+    "react-hotkeys-hook": "^4.5.1",
+    "react-icons": "^5.3.0",
+    "react-markdown": "^9.0.1",
     "react-remark": "^2.1.0",
-    "reactflow": "^11.11.4"
+    "react-router-dom": "^6.26.2",
+    "react-syntax-highlighter": "^15.5.0",
+    "react18-json-view": "^0.2.8",
+    "reactflow": "^11.11.4",
+    "remark-gfm": "^4.0.0",
+    "tailwindcss": "^3.4.13",
+    "web-vitals": "^4.2.3",
+    "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -25,8 +46,15 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
+    "mockjs": "^1.1.0",
+    "msw": "^2.4.9",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
