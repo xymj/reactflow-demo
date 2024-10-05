@@ -164,6 +164,23 @@ export default function DemoTable() {
   const [total, setTotal] = useState(0);
 
   columnsDefault.push({
+    title: "Tags",
+    key: "tags",
+    dataIndex: "tags",
+    render: (_, record) => {
+      let color = _.length > 5 ? "geekblue" : "green";
+      if (_ === "loser") {
+        color = "volcano";
+      }
+
+      return (
+        <Tag color={color} key="tags">
+          {_.toUpperCase()}
+        </Tag>
+      );
+    },
+  });
+  columnsDefault.push({
     title: "Action",
     key: "action",
     render: (_, record) => (

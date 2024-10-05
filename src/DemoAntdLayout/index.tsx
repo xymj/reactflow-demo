@@ -30,8 +30,11 @@ const items2 = [
       { key: "/antd/button", label: "button" },
       { key: "/antd/page", label: "page" },
       { key: "/antd/card", label: "card" },
-      { key: "/antd/table", label: "table" },
-      { key: "/antd/table2", label: "table2" },
+      { key: "/antd/table", label: "table action" },
+      { key: "/antd/table2", label: "table action2" },
+      { key: "/antd/table/column/hidden", label: "table col hidden" },
+      { key: "/antd/table/column/hidden2", label: "table col hidden2" },
+      { key: "/antd/table/remote/data", label: "table remote data" },
     ],
   },
   {
@@ -40,9 +43,18 @@ const items2 = [
     label: "flow demo",
     children: [
       { key: "/flow/base", label: "base" },
-      { key: "/flow/custom", label: "custom" },
+      { key: "/flow/custom", label: "custom node" },
       { key: "/flow/custom/edge", label: "custom edge" },
+      { key: "/flow/subflow", label: "subflow" },
+      { key: "/flow/stateflow", label: "stateflow" },
+      { key: "/flow/drag/drop", label: "drad drop flow" },
     ],
+  },
+  {
+    key: "/jsonview",
+    icon: React.createElement(NotificationOutlined),
+    label: "jsonview demo",
+    children: [{ key: "/jsonview/react18", label: "react18 jsonview" }],
   },
   {
     key: "/msw",

@@ -9,9 +9,22 @@ const DemoPagination = lazy(() => import("./DemoAntdPagination"));
 const DemoCard = lazy(() => import("./DemoAntdCard"));
 const DemoTable = lazy(() => import("./DemoAntdTable"));
 const DemoTable2 = lazy(() => import("./DemoAntdTable/DemoTable2"));
+const DemoTableColumnHidden = lazy(
+  () => import("./DemoAntdTable/DemoTableColumnHidden")
+);
+const DemoTableColumnHidden2 = lazy(
+  () => import("./DemoAntdTable/DemoTableColumnHidden2")
+);
+const DemoTableRemoteData = lazy(
+  () => import("./DemoAntdTable/DemoTableRemoteData")
+);
 const BaseFlow = lazy(() => import("./DemoBase"));
 const CustomFlow = lazy(() => import("./DemoCustomNode"));
 const CustomEdgeFlow = lazy(() => import("./DemoCustomEdge"));
+const DemoSubFlow = lazy(() => import("./DemoSubFlow"));
+const DemoStateFlow = lazy(() => import("./DemoStateFlow"));
+const DemoDragAndDropFlow = lazy(() => import("./DemoDragAndDropFlow"));
+const DemoJsonView = lazy(() => import("./DemoJsonView"));
 const UserList = lazy(() => import("./DemoMockServiceWorker/UserList"));
 
 const routes = [
@@ -48,6 +61,18 @@ const routes = [
         element: <DemoTable2 />,
       },
       {
+        path: "table/column/hidden",
+        element: <DemoTableColumnHidden />,
+      },
+      {
+        path: "table/column/hidden2",
+        element: <DemoTableColumnHidden2 />,
+      },
+      {
+        path: "table/remote/data",
+        element: <DemoTableRemoteData />,
+      },
+      {
         path: "",
         element: <AntdDatePicker />,
       },
@@ -68,6 +93,27 @@ const routes = [
       {
         path: "custom/edge",
         element: <CustomEdgeFlow />,
+      },
+      {
+        path: "subflow",
+        element: <DemoSubFlow />,
+      },
+      {
+        path: "stateflow",
+        element: <DemoStateFlow />,
+      },
+      {
+        path: "drag/drop",
+        element: <DemoDragAndDropFlow />,
+      },
+    ],
+  },
+  {
+    path: "/jsonview",
+    children: [
+      {
+        path: "react18",
+        element: <DemoJsonView />,
       },
     ],
   },
