@@ -1,4 +1,4 @@
-import { applyNodeChanges, applyEdgeChanges, addEdge } from "reactflow";
+import { applyNodeChanges, applyEdgeChanges } from "@xyflow/react";
 import { nanoid } from "nanoid";
 import { create } from "zustand";
 import {
@@ -11,7 +11,7 @@ import {
   disconnect,
 } from "./audio";
 
-const useAudioStore = create((set, get) => ({
+export const useStore = create((set, get) => ({
   nodes: [
     {
       id: "osc",
@@ -33,19 +33,21 @@ const useAudioStore = create((set, get) => ({
   ],
   isRunning: isRunning(),
 
-  toggleAudio: () => {
+  toggleAudio() {
     toggleAudio().then(() => {
       set({ isRunning: isRunning() });
     });
   },
 
-  onNodesChange: (changes) => {
-    set({ nodes: applyNodeChanges(changes, get().nodes) });
+  onNodesChange(changes) {
+    set({
+      nodes: applyNodeChanges(changes, get().nodes),
+    });
   },
 
-  createNode: (type) => {
+  createNode(type, x, y) {
     const id = nanoid();
-    console.log("test createNode", type);
+
     switch (type) {
       case "osc": {
         const data = { frequency: 440, type: "sine" };
@@ -69,7 +71,7 @@ const useAudioStore = create((set, get) => ({
     }
   },
 
-  updateNode: (id, data) => {
+  updateNode(id, data) {
     updateAudioNode(id, data);
     set({
       nodes: get().nodes.map((node) =>
@@ -80,19 +82,19 @@ const useAudioStore = create((set, get) => ({
     });
   },
 
-  onNodesDelete: (deleted) => {
+  onNodesDelete(deleted) {
     for (const { id } of deleted) {
       removeAudioNode(id);
     }
   },
 
-  onEdgesChange: (changes) => {
+  onEdgesChange(changes) {
     set({
       edges: applyEdgeChanges(changes, get().edges),
     });
   },
 
-  addEdge: (data) => {
+  addEdge(data) {
     const id = nanoid(6);
     const edge = { id, ...data };
 
@@ -100,15 +102,9 @@ const useAudioStore = create((set, get) => ({
     set({ edges: [edge, ...get().edges] });
   },
 
-  onConnect: (connection) => {
-    set({ edges: addEdge(connection, get().edges) });
-},
-
   onEdgesDelete(deleted) {
     for (const { source, target } of deleted) {
       disconnect(source, target);
     }
   },
 }));
-
-export default useAudioStore;

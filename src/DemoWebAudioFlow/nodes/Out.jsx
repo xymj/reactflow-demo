@@ -1,31 +1,31 @@
 import React from "react";
 import { Handle } from "@xyflow/react";
-import {shallow, useShallow} from "zustand/shallow";
-import  useAudioStore  from "../store";
+import { shallow } from "zustand/shallow";
+import { useStore } from "../store";
 
+const selector = (store) => ({
+  isRunning: store.isRunning,
+  toggleAudio: store.toggleAudio,
+});
 
-const selector = (state) => ({
-    isRunning: state.isRunning,
-    toggleAudio: state.toggleAudio
-})
+export default function Out({ id, data }) {
+  const { isRunning, toggleAudio } = useStore(selector, shallow);
 
+  return (
+    <div className="rounded-md bg-white shadow-xl px-4 py-2">
+      <Handle className="w-2 h-2" type="target" position="top" />
 
-export default function Out({id, data}) {
-//    const {isRunning, toggleAudio} = useAudioStore(selector,shallow);
-const {isRunning, toggleAudio} = useAudioStore(useShallow(selector));
-   
-   return (
-    <div>
-        <Handle type="target" position="top" id="a" />
-        <button onClick={() => toggleAudio}>
-            {isRunning ? 
-                (<span role="img" aria-label="mute">
-                🔈
-                </span>) 
-            : (<span role="img" aria-label="mute">
-                 🔇
-            </span>)}
-        </button>
+      <button onClick={toggleAudio}>
+        {isRunning ? (
+          <span role="img" aria-label="mute">
+            🔈
+          </span>
+        ) : (
+          <span role="img" aria-label="unmute">
+            🔇
+          </span>
+        )}
+      </button>
     </div>
-   )
+  );
 }

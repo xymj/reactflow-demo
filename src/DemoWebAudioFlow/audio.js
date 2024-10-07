@@ -1,9 +1,10 @@
 const context = new AudioContext();
 const nodes = new Map();
+
 context.suspend();
 
 const osc = context.createOscillator();
-osc.frequency.value = 440;
+osc.frequency.value = 220;
 osc.type = "square";
 osc.start();
 
@@ -27,37 +28,43 @@ export function toggleAudio() {
 
 export function createAudioNode(id, type, data) {
   switch (type) {
-    case "osc":
-      const osc = context.createOscillator();
-      osc.frequency.value = data.frequency;
-      osc.type = data.type;
-      osc.start();
+    case "osc": {
+      const node = context.createOscillator();
+      node.frequency.value = data.frequency;
+      node.type = data.type;
+      node.start();
 
-      nodes.set(id, osc);
+      nodes.set(id, node);
       break;
-    case "amp":
-      const amp = context.createGain();
-      amp.gain.value = data.gain;
-      nodes.set(id, amp);
+    }
+
+    case "amp": {
+      const node = context.createGain();
+      node.gain.value = data.gain;
+
+      nodes.set(id, node);
       break;
+    }
   }
 }
 
 export function updateAudioNode(id, data) {
   const node = nodes.get(id);
-  for (const [key, value] of Object.entries(data)) {
+
+  for (const [key, val] of Object.entries(data)) {
     if (node[key] instanceof AudioParam) {
-      node[key].value = value;
+      node[key].value = val;
     } else {
-      node[key] = value;
+      node[key] = val;
     }
   }
 }
 
 export function removeAudioNode(id) {
   const node = nodes.get(id);
+
   node.disconnect();
-  nodes.stop?.();
+  node.stop?.();
 
   nodes.delete(id);
 }
@@ -65,11 +72,13 @@ export function removeAudioNode(id) {
 export function connect(sourceId, targetId) {
   const source = nodes.get(sourceId);
   const target = nodes.get(targetId);
+
   source.connect(target);
 }
 
 export function disconnect(sourceId, targetId) {
   const source = nodes.get(sourceId);
   const target = nodes.get(targetId);
+
   source.disconnect(target);
 }
