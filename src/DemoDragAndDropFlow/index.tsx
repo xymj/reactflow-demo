@@ -14,6 +14,7 @@ import "./index.css";
 import Sidebar from "./Sidebar";
 import { DnDProvider, useDnDContext } from "./DnDContext";
 import ChartInputNode from "./ChatInput";
+import { AppNode } from "./ChatInput";
 
 const nodeTypes = {
   chartInputNode: ChartInputNode,
@@ -25,7 +26,7 @@ const initialNodes = [
     data: { label: "chart input node", value: "chart input node contest" },
     position: { x: 250, y: 5 },
   },
-];
+] as AppNode[];
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;

@@ -1,10 +1,12 @@
 import React from "react";
-import { Node, Handle, NodeProps, Position } from "@xyflow/react";
+import { Node, Handle, NodeProps, Position, BuiltInNode } from "@xyflow/react";
 
 export type ChatInputNode = Node<
   { label: string; value: string },
   "chartInputNode"
 >;
+
+export type AppNode = ChatInputNode | BuiltInNode;
 
 const updateChatData = (id: string, value: string) => {
   console.log(id, value);

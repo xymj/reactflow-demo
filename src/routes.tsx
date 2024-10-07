@@ -24,6 +24,8 @@ const CustomEdgeFlow = lazy(() => import("./DemoCustomEdge"));
 const DemoSubFlow = lazy(() => import("./DemoSubFlow"));
 const DemoStateFlow = lazy(() => import("./DemoStateFlow"));
 const DemoDragAndDropFlow = lazy(() => import("./DemoDragAndDropFlow"));
+const DemoWebAudioFlow = lazy(() => import("./DemoWebAudioFlow"));
+
 const DemoJsonView = lazy(() => import("./DemoJsonView"));
 const UserList = lazy(() => import("./DemoMockServiceWorker/UserList"));
 
@@ -105,6 +107,10 @@ const routes = [
       {
         path: "drag/drop",
         element: <DemoDragAndDropFlow />,
+      },
+      {
+        path: "webaudio",
+        element: <DemoWebAudioFlow />,
       },
     ],
   },

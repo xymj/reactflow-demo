@@ -25,7 +25,8 @@ const selector = (state) => ({
   setEdges: state.setEdges,
 });
 
-export default function DemoSateFlow() {
+export default function DemoStateFlow() {
+  console.log("test DemoSateFlow ~!!!!");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const showModal = () => {
