@@ -1,4 +1,4 @@
-import { applyNodeChanges, applyEdgeChanges, addEdge } from "reactflow";
+import { applyNodeChanges, applyEdgeChanges, addEdge } from "@xyflow/react";
 import { nanoid } from "nanoid";
 import { create } from "zustand";
 import {
@@ -41,8 +41,19 @@ const useAudioStore = create((set, get) => ({
 
   onNodesChange: (changes) => {
     set({ nodes: applyNodeChanges(changes, get().nodes) });
-  },
-
+},
+    onEdgesChange: (changes) => {
+        set({ edges: applyEdgeChanges(changes, get().edges) });
+    },
+    onConnect: (connection) => {
+        set({ edges: addEdge(connection, get().edges) });
+    },
+    setNodes: (nodes) => {
+        set({ nodes });
+    },
+    setEdges: (edges) => {
+        set({ edges });
+    },
   createNode: (type) => {
     const id = nanoid();
     console.log("test createNode", type);
@@ -86,11 +97,11 @@ const useAudioStore = create((set, get) => ({
     }
   },
 
-  onEdgesChange: (changes) => {
-    set({
-      edges: applyEdgeChanges(changes, get().edges),
-    });
-  },
+  // onEdgesChange: (changes) => {
+  //   set({
+  //     edges: applyEdgeChanges(changes, get().edges),
+  //   });
+  // },
 
   addEdge: (data) => {
     const id = nanoid(6);
@@ -100,9 +111,9 @@ const useAudioStore = create((set, get) => ({
     set({ edges: [edge, ...get().edges] });
   },
 
-  onConnect: (connection) => {
-    set({ edges: addEdge(connection, get().edges) });
-},
+//   onConnect: (connection) => {
+//     set({ edges: addEdge(connection, get().edges) });
+// },
 
   onEdgesDelete(deleted) {
     for (const { source, target } of deleted) {

@@ -18,6 +18,13 @@ const selector = (store) => ({
 export default function Apm({id, data}) {
     // const {setGain} = useAudioStore(selector(id), shallow);
     const store = useAudioStore(useShallow(selector));
+
+
+    const onChange = (event) => {
+        console.log(event.target.value);
+        store.updateNode(id, { gain: +event.target.value });
+    };
+    
     return (
         <div className="rounded-md bg-white shadow-xl">
             <Handle className="w-2 h-2" type="target" position="top" id="a" />
@@ -25,13 +32,13 @@ export default function Apm({id, data}) {
             <label className="flex flex-col px-2 pt-1 pb-4">
                 <p className="text-xs font-bold mb-2">Gain</p>
                 <input 
-                    className="nodag"
-                    type="range" 
-                    min="0" 
-                    max="1" 
+                    className="nodrag"
+                    type="range"
+                    min="0"
+                    max="1"
                     step="0.01"
                     value={data.gain} 
-                    onChange={(event) => store.updateNode(id, { gain: +event.target.value })}/>
+                    onChange={onChange}/>
                 <p className="text-right text-xs">{data.gain.toFixed(2)}</p>
             </label>
             <Handle className="w-2 h-2" type="source" position="bottom" id="b" />

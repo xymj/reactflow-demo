@@ -17,7 +17,7 @@ const {isRunning, toggleAudio} = useAudioStore(useShallow(selector));
    return (
     <div>
         <Handle type="target" position="top" id="a" />
-        <button onClick={() => toggleAudio}>
+        <button onClick={toggleAudio}>
             {isRunning ? 
                 (<span role="img" aria-label="mute">
                 🔈

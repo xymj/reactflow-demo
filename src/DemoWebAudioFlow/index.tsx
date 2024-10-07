@@ -5,6 +5,8 @@ import {
   useReactFlow,
   Background,
   Panel,
+  useNodesState,
+  useEdgesState,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 
@@ -39,17 +41,23 @@ export default function DemoWebAudioFlow() {
   // const store = useAudioStore(selector, shallow);
   const store = useAudioStore(useShallow(selector));
 
+  // const [nodes, setNodes, onNodesChange] = useNodesState(store.nodes);
+  // const [edges, setEdges, onEdgesChange] = useEdgesState(store.edges);
+
+  const onNodesChange = (changes) => {
+    store.onNodesChange(changes);
+  };
   return (
     <ReactFlowProvider>
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={store.nodes}
         edges={store.edges}
-        onNodesChange={() => store.onNodesChange}
-        onNodesDelete={() => store.onNodesDelete}
-        onEdgesChange={() => store.onEdgesChange}
-        onEdgesDelete={() => store.onEdgesDelete}
-        onConnect={() => store.onConnect}
+        onNodesChange={store.onNodesChange}
+        onNodesDelete={store.onNodesDelete}
+        onEdgesChange={store.onEdgesChange}
+        onEdgesDelete={store.onEdgesDelete}
+        onConnect={store.addEdge}
         fitView
       >
         <Panel className="space-x-4" position="top-right">
