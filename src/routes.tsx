@@ -28,6 +28,8 @@ const DemoWebAudioFlow = lazy(() => import("./DemoWebAudioFlow"));
 
 const DemoJsonView = lazy(() => import("./DemoJsonView"));
 const UserList = lazy(() => import("./DemoMockServiceWorker/UserList"));
+const DemoDragEvent = lazy(() => import("./DemoDragEvent"));
+const DemoDragEvent2 = lazy(() => import("./DemoDragEvent/DemoDragEvent2"));
 
 const routes = [
   {
@@ -127,6 +129,20 @@ const routes = [
     path: "/user/list",
     element: <UserList />,
   },
+  {
+    path: "/drag",
+    children: [
+      {
+        path: "event",
+        element: <DemoDragEvent />,
+      },
+      {
+        path: "event2",
+        element: <DemoDragEvent2 />,
+      },
+    ],
+  },
+
   {
     path: "/*",
     element: <NotFindPage />,

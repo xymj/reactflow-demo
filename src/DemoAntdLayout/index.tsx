@@ -63,6 +63,15 @@ const items2 = [
     label: "msw demo",
     children: [{ key: "/user/list", label: "mock user" }],
   },
+  {
+    key: "/react",
+    icon: React.createElement(NotificationOutlined),
+    label: "drag event demo",
+    children: [
+      { key: "/drag/event", label: "drag event" },
+      { key: "/drag/event2", label: "drag event2" },
+    ],
+  },
 ];
 const items3: MenuProps["items"] = [
   UserOutlined,
