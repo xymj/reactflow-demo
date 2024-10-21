@@ -31,6 +31,11 @@ const UserList = lazy(() => import("./DemoMockServiceWorker/UserList"));
 const DemoDragEvent = lazy(() => import("./DemoDragEvent"));
 const DemoDragEvent2 = lazy(() => import("./DemoDragEvent/DemoDragEvent2"));
 
+const DemoReactDialog = lazy(() => import("./DemoReactDialog"));
+const DemoReactDialog2 = lazy(
+  () => import("./DemoReactDialog/DemoReactDialog2")
+);
+
 const routes = [
   {
     path: "/",
@@ -139,6 +144,19 @@ const routes = [
       {
         path: "event2",
         element: <DemoDragEvent2 />,
+      },
+    ],
+  },
+  {
+    path: "/radix",
+    children: [
+      {
+        path: "dialog",
+        element: <DemoReactDialog />,
+      },
+      {
+        path: "dialog2",
+        element: <DemoReactDialog2 />,
       },
     ],
   },

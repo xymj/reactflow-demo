@@ -72,6 +72,15 @@ const items2 = [
       { key: "/drag/event2", label: "drag event2" },
     ],
   },
+  {
+    key: "/radix",
+    icon: React.createElement(NotificationOutlined),
+    label: "radix demo",
+    children: [
+      { key: "/radix/dialog", label: "dialog" },
+      { key: "/radix/dialog2", label: "dialog2" },
+    ],
+  },
 ];
 const items3: MenuProps["items"] = [
   UserOutlined,
